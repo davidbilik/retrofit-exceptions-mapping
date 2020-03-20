@@ -1,0 +1,1 @@
+# retrofit-exceptions-mapping
