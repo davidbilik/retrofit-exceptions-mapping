@@ -3,8 +3,6 @@ package com.ackee.retrofitexceptionsmapping.data.api
 import com.ackee.retrofitexceptionsmapping.data.RemoteRecipesDataSource
 import com.ackee.retrofitexceptionsmapping.domain.entity.Recipe
 import com.ackee.retrofitexceptionsmapping.domain.entity.RecipeId
-import com.ackee.retrofitexceptionsmapping.domain.exception.ApiException
-import com.ackee.retrofitexceptionsmapping.domain.exception.RecipeNotFoundException
 
 class RetrofitRecipesDataSource(
     private val recipesApiDescription: RecipesApiDescription
@@ -15,16 +13,8 @@ class RetrofitRecipesDataSource(
     }
 
     override suspend fun recipe(id: RecipeId): Recipe {
-        return try {
-            recipesApiDescription.recipeDetail(id.value).let {
-                it.toRecipe()
-            }
-        } catch (apiException: ApiException) {
-            throw if (apiException.statusCode == "404") {
-                RecipeNotFoundException(id)
-            } else {
-                apiException
-            }
+        return recipesApiDescription.recipeDetail(id.value).let {
+            it.toRecipe()
         }
     }
 }
