@@ -13,8 +13,16 @@ class RetrofitRecipesDataSource(
     }
 
     override suspend fun recipe(id: RecipeId): Recipe {
-        return recipesApiDescription.recipeDetail(id.value).let {
-            it.toRecipe()
+        return try {
+            recipesApiDescription.recipeDetail(id.value).let {
+                it.toRecipe()
+            }
+        } catch (apiException: ApiException) {
+            throw if (apiException.statusCode == "404") {
+                RecipeNotFoundException(id)
+            } else {
+                apiException
+            }
         }
     }
 }
