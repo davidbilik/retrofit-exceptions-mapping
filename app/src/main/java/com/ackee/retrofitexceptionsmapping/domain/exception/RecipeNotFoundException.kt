@@ -1,3 +1,5 @@
 package com.ackee.retrofitexceptionsmapping.domain.exception
 
-class RecipeNotFoundException(val recipeId: String) : Exception()
+import com.ackee.retrofitexceptionsmapping.domain.entity.RecipeId
+
+data class RecipeNotFoundException(val recipeId: RecipeId) : Exception()

@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.recipesLoadingState.observe(this, Observer { state ->
             when (state) {
                 is AsyncState.Loading -> txt_recipes.text = "Loading"
-                is AsyncState.Error -> txt_recipes.text = state.exception.message
+                is AsyncState.Error -> txt_recipes.text = state.exception.toString()
                 is AsyncState.Loaded -> txt_recipes.text = state.data.joinToString(separator = "\n") { it.name }
             }
         })
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.recipeDetailLoadingState.observe(this, Observer { state ->
             when (state) {
                 is AsyncState.Loading -> txt_recipe_detail.text = "Loading"
-                is AsyncState.Error -> txt_recipe_detail.text = state.exception.message
+                is AsyncState.Error -> txt_recipe_detail.text = state.exception.toString()
                 is AsyncState.Loaded -> txt_recipe_detail.text = state.data.toString()
             }
         })
