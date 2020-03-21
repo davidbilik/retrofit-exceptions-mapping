@@ -1,4 +1,4 @@
-package com.ackee.retrofitexceptionsmapping.data.api.errors
+package com.ackee.retrofitexceptionsmapping.data.api.internal
 
 import retrofit2.Call
 import retrofit2.CallAdapter

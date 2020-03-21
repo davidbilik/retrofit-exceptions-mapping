@@ -8,11 +8,11 @@ import java.io.IOException
 
 fun mapToDomainException(
     remoteException: Throwable,
-    httpExceptionsMapper: (HttpException) -> Exception? = { null }
+    httpExceptionsMapper: HttpExceptionMapper? = null
 ): Exception {
     return when (remoteException) {
         is IOException -> NoInternetException()
-        is HttpException -> httpExceptionsMapper(remoteException) ?: ApiException(remoteException.code().toString())
+        is HttpException -> httpExceptionsMapper?.map(remoteException) ?: ApiException(remoteException.code().toString())
         else -> UnexpectedException(remoteException)
     }
 }

@@ -1,7 +1,7 @@
 package com.ackee.retrofitexceptionsmapping.di
 
 import com.ackee.retrofitexceptionsmapping.data.api.RecipesApiDescription
-import com.ackee.retrofitexceptionsmapping.data.api.errors.ErrorsCallAdapterFactory
+import com.ackee.retrofitexceptionsmapping.data.api.internal.ErrorsCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
