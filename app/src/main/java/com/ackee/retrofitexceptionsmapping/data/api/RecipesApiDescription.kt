@@ -1,6 +1,7 @@
 package com.ackee.retrofitexceptionsmapping.data.api
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface RecipesApiDescription {
 
@@ -8,5 +9,5 @@ interface RecipesApiDescription {
     suspend fun recipes(): List<ApiRecipe>
 
     @GET("recipes/{recipeId}")
-    suspend fun recipeDetail(recipeId: String): ApiRecipe
+    suspend fun recipeDetail(@Path("recipeId") recipeId: String): ApiRecipe
 }
