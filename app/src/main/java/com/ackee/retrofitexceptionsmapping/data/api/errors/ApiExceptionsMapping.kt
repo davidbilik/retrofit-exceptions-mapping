@@ -1,4 +1,4 @@
-package com.ackee.retrofitexceptionsmapping.data.api
+package com.ackee.retrofitexceptionsmapping.data.api.errors
 
 import com.ackee.retrofitexceptionsmapping.domain.exception.ApiException
 import com.ackee.retrofitexceptionsmapping.domain.exception.NoInternetException
@@ -7,7 +7,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 fun mapToDomainException(
-    remoteException: Exception,
+    remoteException: Throwable,
     httpExceptionsMapper: (HttpException) -> Exception? = { null }
 ): Exception {
     return when (remoteException) {
