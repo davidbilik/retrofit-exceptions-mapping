@@ -5,7 +5,7 @@ import com.ackee.retrofitexceptionsmapping.domain.entity.RecipeId
 
 interface RecipesRepository {
 
-    suspend fun getRecipes(): List<Recipe>
+    suspend fun fetchRecipes(): List<Recipe>
 
-    suspend fun recipe(id: RecipeId): Recipe
+    suspend fun fetchRecipe(id: RecipeId): Recipe
 }

@@ -21,7 +21,7 @@ class MainViewModel(
         recipesLoadingState.value = AsyncState.Loading
         viewModelScope.launch {
             try {
-                recipesLoadingState.value = AsyncState.Loaded(recipesRepository.getRecipes())
+                recipesLoadingState.value = AsyncState.Loaded(recipesRepository.fetchRecipes())
             } catch (e: Exception) {
                 recipesLoadingState.value = AsyncState.Error(e)
             }
@@ -32,8 +32,7 @@ class MainViewModel(
         recipeDetailLoadingState.value = AsyncState.Loading
         viewModelScope.launch {
             try {
-                recipeDetailLoadingState.value =
-                    AsyncState.Loaded(recipesRepository.recipe(RecipeId(id)))
+                recipeDetailLoadingState.value = AsyncState.Loaded(recipesRepository.fetchRecipe(RecipeId(id)))
             } catch (e: Exception) {
                 recipeDetailLoadingState.value = AsyncState.Error(e)
             }
