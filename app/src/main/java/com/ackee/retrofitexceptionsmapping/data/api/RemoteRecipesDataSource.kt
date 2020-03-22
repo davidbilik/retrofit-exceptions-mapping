@@ -3,6 +3,8 @@ package com.ackee.retrofitexceptionsmapping.data.api
 import com.ackee.retrofitexceptionsmapping.data.RemoteRecipesDataSource
 import com.ackee.retrofitexceptionsmapping.domain.entity.Recipe
 import com.ackee.retrofitexceptionsmapping.domain.entity.RecipeId
+import com.ackee.retrofitexceptionsmapping.domain.exception.ApiException
+import com.ackee.retrofitexceptionsmapping.domain.exception.RecipeNotFoundException
 
 class RetrofitRecipesDataSource(
     private val recipesApiDescription: RecipesApiDescription
